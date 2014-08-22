@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki_database_standard
+# Cookbook Name:: pmwiki
+# Recipe:: database_standard
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.
@@ -34,9 +34,9 @@
 pmwiki_dir = node['apache']['docroot_dir']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
-version = node['lamp']['adodb']['version']
-act = node['lamp']['pmwiki']['action']
-auto = node['lamp']['pmwiki']['auto_config']
+version = node['pmwiki']['adodb']['version']
+act = node['pmwiki']['action']
+auto = node['pmwiki']['auto_config']
 
 adodb_url = "http://sourceforge.net/projects/adodb/files/adodb-php5-only/adodb-#{version}-for-php5/adodb#{version}.zip"
 connect_url = 'http://www.pmwiki.org/pmwiki/uploads/Cookbook/adodb-connect.php'

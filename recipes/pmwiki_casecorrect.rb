@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki_casecorrect
+# Cookbook Name:: pmwiki
+# Recipe:: casecorrect
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.
@@ -30,8 +30,8 @@
 pmwiki_dir = node['apache']['docroot_dir']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
-act = node['lamp']['pmwiki']['action']
-auto = node['lamp']['pmwiki']['auto_config']
+act = node['pmwiki']['action']
+auto = node['pmwiki']['auto_config']
 
 casecorrect_url = "http://www.pmwiki.org/pmwiki/uploads/Cookbook/casecorrect.php"
 

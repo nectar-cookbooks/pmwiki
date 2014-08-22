@@ -7,18 +7,20 @@
 ##  for more details on the types of customizations that can be added
 ##  to PmWiki.
 
+<% pmwiki = node['pmwiki'] %>
+
 ##  $WikiTitle is the name that appears in the browser's title bar.
-$WikiTitle = "<%= node['lamp']['pmwiki']['wiki_title'] %>";
+$WikiTitle = "<%= pmwiki['wiki_title'] %>";
 
 ##  $ScriptUrl is your preferred URL for accessing wiki pages
 ##  $PubDirUrl is the URL for the pub directory.
 # $ScriptUrl = 'http://www.mydomain.com/path/to/pmwiki.php';
 # $PubDirUrl = 'http://www.mydomain.com/path/to/pub';
-<% if node['lamp']['pmwiki']['script_url'] %>
-$ScriptUrl = "<%= node['lamp']['pmwiki']['script_url'] %>";
+<% if pmwiki['script_url'] %>
+$ScriptUrl = "<%= pmwiki['script_url'] %>";
 <% end %>
-<% if node['lamp']['pmwiki']['pub_dir_url'] %>
-$PubDirUrl = "<%= node['lamp']['pmwiki']['pub_dir_url'] %>";
+<% if pmwiki['pub_dir_url'] %>
+$PubDirUrl = "<%= pmwiki['pub_dir_url'] %>";
 <% end %>
 
 ##  If you want to use URLs of the form .../pmwiki.php/Group/PageName
@@ -28,23 +30,23 @@ $PubDirUrl = "<%= node['lamp']['pmwiki']['pub_dir_url'] %>";
 ##  want to check http://www.pmwiki.org/wiki/Cookbook/CleanUrls more
 ##  details about this setting and other ways to create nicer-looking urls.
 # $EnablePathInfo = 1;
-<% if node['lamp']['pmwiki']['enable_path_info'] then %>
+<% if pmwiki['enable_path_info'] then %>
 $EnablePathInfo = 1;
 <% end %>
 
 ## $PageLogoUrl is the URL for a logo image -- you can change this
 ## to your own logo if you wish.
 # $PageLogoUrl = "$PubDirUrl/skins/pmwiki/pmwiki-32.gif";
-<% if node['lamp']['pmwiki']['page_logo_url'] %>
-$PageLogoUrl = "<%= node['lamp']['pmwiki']['page_logo_url'] %>";
+<% if pmwiki['page_logo_url'] %>
+$PageLogoUrl = "<%= pmwiki['page_logo_url'] %>";
 <% end %>
 
 ## If you want to have a custom skin, then set $Skin to the name
 ## of the directory (in pub/skins/) that contains your skin files.
 ## See PmWiki.Skins and Cookbook.Skins.
 # $Skin = 'pmwiki';
-<% if node['lamp']['pmwiki']['skin'] then %>
-$Skin = "node['lamp']['pmwiki']['skin']";
+<% if pmwiki['skin'] then %>
+$Skin = "pmwiki['skin']";
 <% end %>
 
 ## You'll probably want to set an administrative password that you
@@ -54,7 +56,7 @@ $Skin = "node['lamp']['pmwiki']['skin']";
 ## and PmWiki.PasswordsAdmin.
 # $DefaultPasswords['admin'] = crypt('secret');
 $DefaultPasswords['admin'] = 
-  <%= (node['lamp']['pmwiki']['admin_password'] ? "'#{node['lamp']['pmwiki']['admin_password']}'" : "crypt('yOrEaLlyReAlLyNeEdToChAnGeThIs')") %>;
+  <%= (pmwiki['admin_password'] ? "'#{pmwiki['admin_password']}'" : "crypt('yOrEaLlyReAlLyNeEdToChAnGeThIs')") %>;
 
 ## Unicode (UTF-8) allows the display of all languages and all alphabets.
 ## Highly recommended for new wikis.
@@ -65,21 +67,21 @@ include_once("scripts/xlpage-utf-8.php");
 ## blocklists in place to avoid wikispam.  See PmWiki.Blocklist.
 # $EnableBlocklist = 1;                    # enable manual blocklists
 # $EnableBlocklist = 10;                   # enable automatic blocklists
-<% if node['lamp']['pmwiki']['enable_blocklist'] then %>
-$EnableBlocklist = node['lamp']['pmwiki']['enable_blocklist'];
+<% if pmwiki['enable_blocklist'] then %>
+$EnableBlocklist = pmwiki['enable_blocklist'];
 <% end %>
 
 ##  PmWiki comes with graphical user interface buttons for editing;
 ##  to enable these buttons, set $EnableGUIButtons to 1.  
 # $EnableGUIButtons = 1;
-<% if node['lamp']['pmwiki']['enable_gui_buttons'] then %>
+<% if pmwiki['enable_gui_buttons'] then %>
 $EnableGUIButtons = 1;
 <% end %>
 
 ##  To enable markup syntax from the Creole common wiki markup language
 ##  (http://www.wikicreole.org/), include it here:
 # include_once("scripts/creole.php");
-<% if node['lamp']['pmwiki']['enable_creole'] then %>
+<% if pmwiki['enable_creole'] then %>
 include_once("scripts/creole.php");
 <% end %>
 
@@ -90,8 +92,8 @@ include_once("scripts/creole.php");
 # $EnableWSPre = 1;   # lines beginning with space are preformatted (default)
 # $EnableWSPre = 4;   # lines with 4 or more spaces are preformatted
 # $EnableWSPre = 0;   # disabled
-<% if node['lamp']['pmwiki']['ws_pre'] then %>
-$EnableWSPre = <%= node['lamp']['pmwiki']['ws_pre'] %>;
+<% if pmwiki['ws_pre'] then %>
+$EnableWSPre = <%= pmwiki['ws_pre'] %>;
 <% end %>
 
 
@@ -102,18 +104,18 @@ $EnableWSPre = <%= node['lamp']['pmwiki']['ws_pre'] %>;
 # $EnableUpload = 1;
 # $UploadPermAdd = 0;
 # $DefaultPasswords['upload'] = crypt('secret');
-<% if node['lamp']['pmwiki']['enable_upload'] then %>
+<% if pmwiki['enable_upload'] then %>
 $EnableUpload = 1;
-$UploadPermAdd = node['lamp']['pmwiki']['upload_perm_add'];
+$UploadPermAdd = pmwiki['upload_perm_add'];
 $DefaultPasswords['upload'] = 
-  <%= (node['lamp']['pmwiki']['upload_password'] ? "'#{node['lamp']['pmwiki']['upload_password']}'" : "crypt('yOrEaLlyReAlLyNeEdToChAnGeThIsAsWeLl')") %>;
+  <%= (pmwiki['upload_password'] ? "'#{pmwiki['upload_password']}'" : "crypt('yOrEaLlyReAlLyNeEdToChAnGeThIsAsWeLl')") %>;
 <% end %>
 
 ##  Setting $EnableDiag turns on the ?action=diag and ?action=phpinfo
 ##  actions, which often helps others to remotely troubleshoot 
 ##  various configuration and execution problems.
 # $EnableDiag = 1;                         # enable remote diagnostics
-<% if node['lamp']['pmwiki']['enable_diag'] then %>
+<% if pmwiki['enable_diag'] then %>
 $EnableDiag = 1;
 <% end %>
 
@@ -122,29 +124,29 @@ $EnableDiag = 1;
 ##  smart manner.  Note that you may want to have caching disabled while
 ##  adjusting configuration files or layout templates.
 # $EnableIMSCaching = 1;                   # allow browser caching
-<% if node['lamp']['pmwiki']['enable_ims_caching'] then %>
+<% if pmwiki['enable_ims_caching'] then %>
 $EnableIMSCaching = 1;
 <% end %>
 
 ##  Set $SpaceWikiWords if you want WikiWords to automatically 
 ##  have spaces before each sequence of capital letters.
 # $SpaceWikiWords = 1;                     # turn on WikiWord spacing
-<% if node['lamp']['pmwiki']['space_wikiwords'] then %>
+<% if pmwiki['space_wikiwords'] then %>
 $SpaceWikiWords = 1;
 <% end %>
 
 ##  Set $EnableWikiWords if you want to allow WikiWord links.
 ##  For more options with WikiWords, see scripts/wikiwords.php .
 # $EnableWikiWords = 1;                    # enable WikiWord links
-<% if node['lamp']['pmwiki']['enable_wikiwords'] then %>
+<% if pmwiki['enable_wikiwords'] then %>
 $EnableWikiWords = 1;
 <% end %>
 
 ##  $DiffKeepDays specifies the minimum number of days to keep a page's
 ##  revision history.  The default is 3650 (approximately 10 years).
 # $DiffKeepDays=30;                        # keep page history at least 30 days
-<% if node['lamp']['pmwiki']['diff_keep_days'] then %>
-$DiffKeepDays = node['lamp']['pmwiki']['diff_keep_days'];
+<% if pmwiki['diff_keep_days'] then %>
+$DiffKeepDays = pmwiki['diff_keep_days'];
 <% end %>
 
 ## By default, viewers are prevented from seeing the existence
@@ -155,14 +157,14 @@ $DiffKeepDays = node['lamp']['pmwiki']['diff_keep_days'];
 ## viewers may learn of the existence of read-protected pages.
 ## (It does not enable them to access the contents of the pages.)
 # $EnablePageListProtect = 0;
-<% if !node['lamp']['pmwiki']['enable_page_list_protected'] then %>
+<% if !pmwiki['enable_page_list_protected'] then %>
 $EnablePageListProtect = 0;
 <% end %>
 
 ##  The refcount.php script enables ?action=refcount, which helps to
 ##  find missing and orphaned pages.  See PmWiki.RefCount.
 # if ($action == 'refcount') include_once("scripts/refcount.php");
-<% if !node['lamp']['pmwiki']['enable_refcount'] then %>
+<% if !pmwiki['enable_refcount'] then %>
 if ($action == 'refcount') include_once("scripts/refcount.php");
 <% end %>
 
@@ -173,16 +175,16 @@ if ($action == 'refcount') include_once("scripts/refcount.php");
 # if ($action == 'dc')   include_once("scripts/feeds.php");  # Dublin Core
 # if ($action == 'rdf')  include_once("scripts/feeds.php");  # RSS 1.0
 
-<% if !node['lamp']['pmwiki']['enable_rss_feed'] then %>
+<% if !pmwiki['enable_rss_feed'] then %>
 if ($action == 'rss')  include_once("scripts/feeds.php");
 <% end %>
-<% if !node['lamp']['pmwiki']['enable_atom_feed'] then %>
+<% if !pmwiki['enable_atom_feed'] then %>
 if ($action == 'atom') include_once("scripts/feeds.php");
 <% end %>
-<% if !node['lamp']['pmwiki']['enable_dc_feed'] then %>
+<% if !pmwiki['enable_dc_feed'] then %>
 if ($action == 'dc')   include_once("scripts/feeds.php");
 <% end %>
-<% if !node['lamp']['pmwiki']['enable_rdf_feed'] then %>
+<% if !pmwiki['enable_rdf_feed'] then %>
 if ($action == 'rdf')  include_once("scripts/feeds.php");
 <% end %>
 
@@ -190,7 +192,7 @@ if ($action == 'rdf')  include_once("scripts/feeds.php");
 ##  relative page variables provide greater flexibility and are recommended.
 ##  (If you're starting a new site, it's best to leave this setting alone.)
 # $EnableRelativePageVars = 1; # 1=relative; 0=absolute
-<% if !node['lamp']['pmwiki']['enable_relative_page_vars'] then %>
+<% if !pmwiki['enable_relative_page_vars'] then %>
 $EnableRelativePageVars = 1;
 <% end %>
 
@@ -200,7 +202,7 @@ $EnableRelativePageVars = 1;
 ##  category page is saved.  (The page is created only if
 ##  the author has edit permissions to the Category group.)
 # $AutoCreate['/^Category\\./'] = array('ctime' => $Now);
-<% if !node['lamp']['pmwiki']['enable_autocreate_categories'] then %>
+<% if !pmwiki['enable_autocreate_categories'] then %>
 $AutoCreate['/^Category\\./'] = array('ctime' => $Now);
 <% end %>
 
@@ -238,15 +240,15 @@ $AutoCreate['/^Category\\./'] = array('ctime' => $Now);
 #                       '||border=1 width=80%\\n||!Hdr ||!Hdr ||!Hdr ||\\n||     ||     ||     ||\\n||     ||     ||     ||\\n', '', '', 
 #                     '$GUIButtonDirUrlFmt/table.gif"$[Table]"');
 
-<% if node['lamp']['pmwiki']['tz'] then %>
-date_default_timezone_set("<%= node['lamp']['pmwiki']['tz'] %>");
+<% if pmwiki['tz'] then %>
+date_default_timezone_set("<%= pmwiki['tz'] %>");
 <% end %>
 
-<% if node['lamp']['pmwiki']['enable_post_author_required'] then %>
+<% if pmwiki['enable_post_author_required'] then %>
 $EnablePostAuthorRequired = 1;
 <% end %>
 
-<% if node['lamp']['pmwiki']['auto_config'] then %>
+<% if pmwiki['auto_config'] then %>
 foreach ( scandir($LocalDir) as $filename )
     if ( $filename != 'config.php' && preg_match('/.php$/', $filename) )
         include_once("$LocalDir/$filename");

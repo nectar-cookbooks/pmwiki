@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki_sourceblock
+# Cookbook Name:: pmwiki
+# Recipe:: sourceblock
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.
@@ -31,8 +31,8 @@ pmwiki_dir = node['apache']['docroot_dir']
 version = node['lamp']['geshi']['version']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
-act = node['lamp']['pmwiki']['action']
-auto = node['lamp']['pmwiki']['auto_config']
+act = node['pmwiki']['action']
+auto = node['pmwiki']['auto_config']
 script = 'sourceblock.php'
 zip_path = "#{Chef::Config['file_cache_path']}/GeSHi-#{version}.zip"
 

@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki_authuserdbase
+# Cookbook Name:: pmwiki
+# Recipe:: authuserdbase
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.
@@ -30,20 +30,20 @@
 pmwiki_dir = node['apache']['docroot_dir']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
-version = node['lamp']['pmwiki']['authuserdbase']['version']
-act = node['lamp']['pmwiki']['action']
-auto = node['lamp']['pmwiki']['auto_config']
-install_test = node['lamp']['pmwiki']['authuserdbase']['install_test'] || false
+version = node['pmwiki']['authuserdbase']['version']
+act = node['pmwiki']['action']
+auto = node['pmwiki']['auto_config']
+install_test = node['pmwiki']['authuserdbase']['install_test'] || false
 
 host = node['lamp']['database']['host'] || 'localhost'
 root_password = node['lamp']['database']['root_password'] 
 raise "I need the database root password" unless root_password
-user = node['lamp']['pmwiki']['authuserdbase']['db_user']
-password = node['lamp']['pmwiki']['authuserdbase']['db_password']
+user = node['pmwiki']['authuserdbase']['db_user']
+password = node['pmwiki']['authuserdbase']['db_password']
 raise "I need the password for the pmwiki db user" unless password
 
-database = node['lamp']['pmwiki']['authuserdbase']['database']
-node.normal['lamp']['adodb']['databases'][database] = {
+database = node['pmwiki']['authuserdbase']['database']
+node.normal['adodb']['databases'][database] = {
   'driver' => 'mysqli',
   'database' => database,
   'hostname' => host,
@@ -87,7 +87,7 @@ if auto then
   end
 end
 
-if node['lamp']['pmwiki']['authuserdbase']['standalone'] then
+if node['pmwiki']['authuserdbase']['standalone'] then
   include_recipe 'lamp::database'
 
   connection_info = {

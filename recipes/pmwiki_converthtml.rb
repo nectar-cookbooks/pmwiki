@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki_cnverthtml
+# Cookbook Name:: pmwiki
+# Recipe:: converthtml
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.

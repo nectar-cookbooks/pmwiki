@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki_pagetoc
+# Cookbook Name:: pmwiki
+# Recipe:: pagetoc
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.
@@ -30,9 +30,9 @@
 pmwiki_dir = node['apache']['docroot_dir']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
-act = node['lamp']['pmwiki']['action']
-auto = node['lamp']['pmwiki']['auto_config']
-script = "#{node['lamp']['pagetoc']['script']}.php"
+act = node['pmwiki']['action']
+auto = node['pmwiki']['auto_config']
+script = "#{node['pagetoc']['script']}.php"
 script_url = "http://www.pmwiki.org/pmwiki/uploads/Cookbook/#{script}"
 
 case act 

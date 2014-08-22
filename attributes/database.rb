@@ -1,6 +1,6 @@
-node.default['lamp']['adodb']['version'] = '519'
-node.default['lamp']['adodb']['default_password'] = nil
-node.default['lamp']['adodb']['databases'] = {}
+node.default['pmwiki']['adodb']['version'] = '519'
+node.default['pmwiki']['adodb']['default_password'] = nil
+node.default['pmwiki']['adodb']['databases'] = {}
 
 # Example 'databases' hash.  Note that other recipes may add their own
 # entries to the attribute on the fly.
@@ -13,6 +13,3 @@ node.default['lamp']['adodb']['databases'] = {}
 #     'password' => nil
 #   }
 # }                                           
-
-node.default['lamp']['database']['root_password'] = nil
-node.default['lamp']['database']['host'] = 'localhost'

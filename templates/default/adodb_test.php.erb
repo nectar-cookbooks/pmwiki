@@ -1,5 +1,5 @@
 <?php
-<% db_params = node['lamp']['pmwiki']['authuserdbase'] %>
+<% db_params = node['pmwiki']['authuserdbase'] %>
 include('<%= "#{node['apache']['docroot_dir']}/pmwiki/cookbook/adodb/adodb.inc.php" %>');
 $DB = NewADOConnection('<%= db_params['driver'] || 'mysqli' %>');  
 if (!$DB) { 

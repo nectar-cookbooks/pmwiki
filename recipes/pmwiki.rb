@@ -1,6 +1,6 @@
 #
-# Cookbook Name:: lamp
-# Recipe:: pmwiki
+# Cookbook Name:: pmwiki
+# Recipe:: default
 #
 # Copyright (c) 2014, The University of Queensland
 # All rights reserved.
@@ -36,12 +36,12 @@ include_recipe 'lamp::base'
 pmwiki_dir = node['apache']['docroot_dir']
 pmwiki = "#{pmwiki_dir}/pmwiki"
 
-version = node['lamp']['pmwiki']['version'] 
+version = node['pmwiki']['version'] 
 zip_path = "#{Chef::Config['file_cache_path']}/#{version}.zip"
-site = node['lamp']['pmwiki']['site'] || 'default'
-act = node['lamp']['pmwiki']['action']
-config = node['lamp']['pmwiki']['config']
-config_cookbook = node['lamp']['pmwiki']['config_cookbook']
+site = node['pmwiki']['site'] || 'default'
+act = node['pmwiki']['action']
+config = node['pmwiki']['config']
+config_cookbook = node['pmwiki']['config_cookbook']
 
 case act 
 when 'install', 'upgrade'
@@ -83,7 +83,7 @@ else
       raise "Can't find the ZIP file" unless ::File.exists?(zip_path)
       p = shell_out!("unzip -Z -1 #{zip_path} | head -n 1")
       real_version = %r{^[^/]+}.match(p.stdout)[0]
-      node.override['lamp']['pmwiki']['real_version'] = real_version
+      node.override['pmwiki']['real_version'] = real_version
     end
     notifies :run, "bash[#{act} pmwiki]", :immediate
   end
@@ -92,8 +92,8 @@ else
     code lazy { <<-EOF
     cd #{pmwiki_dir}
     unzip #{zip_path}
-    cp -a #{node['lamp']['pmwiki']['real_version']} #{pmwiki}
-    rm -rf #{node['lamp']['pmwiki']['real_version']}
+    cp -a #{node['pmwiki']['real_version']} #{pmwiki}
+    rm -rf #{node['pmwiki']['real_version']}
 EOF
     }
     user node['apache']['user']
