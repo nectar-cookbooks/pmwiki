@@ -45,3 +45,11 @@ node.default['pmwiki']['enable_post_author_required'] = true
 node.default['pmwiki']['flash_script'] = 'swf.php'
 
 node.default['pmwiki']['geshi_version'] = '1.0.8.11'
+
+node.default['pmwiki']['selectquery']['script'] = 'selectquery'
+node.default['pmwiki']['selectquery']['page_group'] = 'Administration'
+node.default['pmwiki']['selectquery']['database'] = nil
+node.default['pmwiki']['selectquery']['seperator'] = nil  # sic
+node.default['pmwiki']['selectquery']['field_id'] = nil
+node.default['pmwiki']['selectquery']['table_id'] = nil
+
