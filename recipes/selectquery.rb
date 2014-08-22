@@ -58,7 +58,7 @@ else
 end
   
 remote_file "#{cookbook_dir}/#{script}.php" do
-  source scirpt_url
+  source script_url
   action if act == 'install' ? :create_if_missing : :create
 end
 
