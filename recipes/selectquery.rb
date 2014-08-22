@@ -65,6 +65,6 @@ end
 if auto then
   template "#{local_dir}/27-selectquery.php" do
     source "selectquery_conf.php.erb"
-    action :create_if_missing
+    action :create
   end
 end

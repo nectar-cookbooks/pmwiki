@@ -62,7 +62,7 @@ else
   if auto then
     template "#{local_dir}/21-casecorrect.php" do
       source "casecorrect_conf.php.erb"
-      action :create_if_missing
+      action :create
     end
     
     ruby_block "adding (:case-correction:) to Site.PageNotFound" do

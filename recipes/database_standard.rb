@@ -71,7 +71,7 @@ else
   
   remote_file zip_path do
     source adodb_url
-    action :create_if_missing
+    action :create
   end
   
   bash "#{act} pmwiki/cookbook/adodb" do
@@ -96,7 +96,7 @@ if auto then
     block do
       #nothing
     end
-    notifies :create_if_missing, "template[#{local_dir}/10-adodb.php]", :delayed
+    notifies :create, "template[#{local_dir}/10-adodb.php]", :delayed
   end
 
   template "#{local_dir}/10-adodb.php" do

@@ -82,7 +82,7 @@ EOF
   if auto then
     template "#{local_dir}/25-sourceblock.php" do
       source "sourceblock_conf.php.erb"
-      action :create_if_missing
+      action :create
     end
   end
 end

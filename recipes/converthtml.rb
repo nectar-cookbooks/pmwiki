@@ -62,7 +62,7 @@ else
   if auto then
     template "#{local_dir}/22-converthtml.php" do
       source "converthtml_conf.php.erb"
-      action :create_if_missing
+      action :create
     end
   end
 end

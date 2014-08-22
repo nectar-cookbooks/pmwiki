@@ -74,7 +74,7 @@ else
       source "flash_conf.php.erb"
       variables ({ :Flash_Script => script,
                    :Flash_Description => description })
-      action :create_if_missing
+      action :create
     end
   end
 end

@@ -64,7 +64,7 @@ else
   if auto then
     template "#{local_dir}/24-swfsites.php" do
       source "swfsites_conf.php.erb"
-      action :create_if_missing
+      action :create
     end
   end
 end
