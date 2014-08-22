@@ -28,7 +28,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 pmwiki_dir = node['apache']['docroot_dir']
-version = node['lamp']['geshi']['version']
+version = node['pmwiki']['geshi_version']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
 act = node['pmwiki']['action']
