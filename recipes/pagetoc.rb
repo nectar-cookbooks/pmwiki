@@ -32,7 +32,7 @@ cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
 act = node['pmwiki']['action']
 auto = node['pmwiki']['auto_config']
-script = "#{node['pagetoc']['script']}.php"
+script = "#{node['pmwiki']['pagetoc']['script']}.php"
 script_url = "http://www.pmwiki.org/pmwiki/uploads/Cookbook/#{script}"
 
 case act 
