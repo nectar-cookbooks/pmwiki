@@ -30,8 +30,8 @@
 pmwiki_dir = node['apache']['docroot_dir']
 cookbook_dir = "#{pmwiki_dir}/pmwiki/cookbook"
 local_dir = "#{pmwiki_dir}/pmwiki/local"
-act = node['lamp']['pmwiki']['action']
-auto = node['lamp']['pmwiki']['auto_config']
+act = node['pmwiki']['action']
+auto = node['pmwiki']['auto_config']
 
 converthtml_url = "http://www.pmwiki.org/pmwiki/uploads/Cookbook/convert-html.php"
 
