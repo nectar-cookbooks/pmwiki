@@ -8,7 +8,7 @@
    if sq['page_group'] then 
 %>
 if (FmtPageName('$Group', $pagename) == '<%= sq['page_group'] %>' {
-  include_once("$FarmD/cookbook/<%= sq['page_group'] %>.php");
+  include_once("$FarmD/cookbook/<%= sq['script'] %>.php");
 }
 <% else %>
 include_once("$FarmD/cookbook/<%= sq['script'] %>.php");
