@@ -51,7 +51,7 @@ node.normal['adodb']['databases'][database] = {
   'password' => password
 }
 
-include_recipe "lamp::pmwiki_database_standard"
+include_recipe "pmwiki::database_standard"
 
 authuserdbase_url = "http://www.pmwiki.org/pmwiki/uploads/Cookbook/AuthUserDbase-#{version}.php"
 
