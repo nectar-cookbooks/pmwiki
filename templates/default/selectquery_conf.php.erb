@@ -15,14 +15,14 @@ include_once("$FarmD/cookbook/<%= sq['page_group'] %>.php");
 <% end %>
 
 <% raise "Must have a value for node['pmwiki']['selectquery']['database']" unless sq['database'] %>
-$SelectQuerySettings['database'] = "<%= sq['database']"
+$SelectQuerySettings['database'] = "<%= sq['database'] %>";
 <% if sq['seperator'] then %>
-$SelectQuerySettings['Seperator'] = "<%= sq['seperator']"
+$SelectQuerySettings['Seperator'] = "<%= sq['seperator'] %>";
 <% end %>
 <% if sq['seperator'] then %>
-$SelectQuerySettings['FieldID'] = "<%= sq['field_id']"
+$SelectQuerySettings['FieldID'] = "<%= sq['field_id'] %>";
 <% end %>
 <% if sq['seperator'] then %>
-$SelectQuerySettings['TableID'] = "<%= sq['table_id']"
+$SelectQuerySettings['TableID'] = "<%= sq['table_id'] %>";
 <% end %>
 
